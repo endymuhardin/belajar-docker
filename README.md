@@ -115,12 +115,61 @@ Test instalasi (setelah `default` machine berjalan dan environment variable dise
 docker run hello-world
 ```
 
+## Setup Docker Machine di Digital Ocean ##
+
+Membuat Droplet berisi Docker Machine
+
+```
+docker-machine create --driver digitalocean --digitalocean-access-token yaddayaddayadda docker-ocean
+```
+
+Menjalankan Docker Machine
+
+```
+docker-machine start docker-ocean
+```
+
+Setup environment
+
+```
+eval $(docker-machine env docker-ocean)
+```
+
 ## Menjalankan Java di Docker ##
 
 ```
 cd java-halo-docker
 docker build -t halo-java .
 docker run -rm halo-java
+```
+
+## Menjalankan Jekyll Blog di Docker ##
+
+```
+cd jekyll-docker
+docker build -t website-endy .
+docker run -itd -p 80:4000 website-endy
+```
+
+## Copy File dari Local ke Container ##
+
+Cari tau dulu container id
+
+```
+docker ps -a
+```
+
+Outputnya
+
+```
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
+599ba5ce1f86        website-endy        "jekyll serve --host="   12 seconds ago      Up 10 seconds       0.0.0.0:4000->4000/tcp   desperate_sinoussi
+```
+
+Copy file `coba.txt` ke folder `/opt` di dalam container
+
+```
+docker cp coba.txt desperate_sinoussi:/opt/
 ```
 
 
