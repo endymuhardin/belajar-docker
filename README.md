@@ -170,6 +170,21 @@ mvn clean test jacoco:report
 exit
 ```
 
+Secara default, container tersebut akan membuat database dengan konfigurasi:
+
+* nama database : `belajar`
+* username database : `belajar`
+* password database : `java`
+
+Kita bisa mengganti konfigurasi tersebut pada waktu menjalankan container sebagai berikut:
+
+```
+docker run -it --rm \
+    -e MYSQL_DATABASE=demo \
+    -e MYSQL_USERNAME=coba \
+    -e MYSQL_PASSWORD=rahasia \
+    maven-builder
+```
 
 ## Copy File dari Local ke Container ##
 
