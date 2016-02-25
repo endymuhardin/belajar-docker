@@ -172,4 +172,15 @@ Copy file `coba.txt` ke folder `/opt` di dalam container
 docker cp coba.txt desperate_sinoussi:/opt/
 ```
 
+## Connect ke Docker Container ##
 
+Buka shell baru di container yang sedang berjalan
+```
+docker exec -it desperate_sinoussi bash
+```
+
+Connect ke container yang sedang berjalan, dan melihat apa adanya tampilan di prompt
+
+```
+docker attach desperate_sinoussi
+```
