@@ -151,6 +151,26 @@ docker build -t website-endy .
 docker run -itd -p 80:4000 website-endy
 ```
 
+## Menjalankan Maven Build di Docker ##
+
+Build dan start container
+
+```
+cd maven-build-docker
+docker build -t maven-builder .
+docker run -it --rm maven-builder
+```
+
+Setelah container run, kita akan masuk ke prompt
+
+```
+git clone https://github.com/endymuhardin/belajar-ci.git
+cd belajar-ci
+mvn clean test jacoco:report
+exit
+```
+
+
 ## Copy File dari Local ke Container ##
 
 Cari tau dulu container id
