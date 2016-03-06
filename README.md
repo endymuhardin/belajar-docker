@@ -219,3 +219,31 @@ Connect ke container yang sedang berjalan, dan melihat apa adanya tampilan di pr
 ```
 docker attach desperate_sinoussi
 ```
+
+## Membuat VPN Server ##
+
+Jalankan OpenVPN server
+
+```
+docker run --name openvpnserver -d --privileged -p 1194:1194/udp -p 443:443/tcp jpetazzo/dockvpn
+```
+
+Jalankan container sementara untuk mendapatkan konfigurasinya
+
+```
+docker run --rm -it -p 8080:8080 --volumes-from openvpnserver jpetazzo/dockvpn serveconfig
+```
+
+Dia akan mengeluarkan link download konfigurasi, misalnya seperti ini
+
+```
+https://104.131.109.60:8080/
+```
+
+Download konfigurasi
+
+```
+wget --no-check-certificate  https://104.131.109.60:8080/ -O DockerVPN.ovpn
+```
+
+Buka `DockerVPN.ovpn` dengan aplikasi VPN yang Anda gunakan.
