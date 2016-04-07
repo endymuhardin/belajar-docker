@@ -120,7 +120,7 @@ docker run hello-world
 Membuat Droplet berisi Docker Machine
 
 ```
-docker-machine create --driver digitalocean --digitalocean-access-token yaddayaddayadda docker-ocean
+docker-machine create --driver digitalocean --digitalocean-size 1gb --digitalocean-access-token yaddayaddayadda docker-ocean
 ```
 
 Menjalankan Docker Machine
@@ -243,7 +243,7 @@ https://104.131.109.60:8080/
 Download konfigurasi
 
 ```
-wget --no-check-certificate  https://104.131.109.60:8080/ -O DockerVPN.ovpn
+wget --no-check-certificate -O DockerVPN.ovpn https://104.131.109.60:8080/ 
 ```
 
 Buka `DockerVPN.ovpn` dengan aplikasi VPN yang Anda gunakan.
